@@ -114,6 +114,12 @@ func resourceRuleCreate(d *schema.ResourceData, meta interface{}) error {
 		return err
 	}
 
+	_, err = FindRuleByEventBusAndRuleNames(conn, aws.StringValue(input.EventBusName), aws.StringValue(input.Name))
+
+	if !tfresource.NotFound(err) {
+		return fmt.Errorf("rule with the name (%s) already exists on this event bus (%s)", aws.StringValue(input.EventBusName), aws.StringValue(input.Name))
+	}
+
 	if len(tags) > 0 {
 		input.Tags = Tags(tags.IgnoreAWS())
 	}
