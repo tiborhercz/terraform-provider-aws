@@ -337,6 +337,7 @@ func fieldToMatchBaseSchema() *schema.Resource {
 			"cookies": {
 				Type:     schema.TypeList,
 				Optional: true,
+				MaxItems: 1,
 				Elem: &schema.Resource{
 					Schema: map[string]*schema.Schema{
 						"match_scope": {
