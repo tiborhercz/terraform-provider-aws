@@ -369,7 +369,6 @@ func fieldToMatchBaseSchema() *schema.Resource {
 									"excluded_cookies": {
 										Type:     schema.TypeList,
 										Optional: true,
-										Computed: true,
 										Elem:     &schema.Schema{Type: schema.TypeString},
 									},
 								},
